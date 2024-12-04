@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/urban-ranch-grasshopper/static/css/main.f855e6bc.css",
-    "main.js": "/urban-ranch-grasshopper/static/js/main.6b61c923.js",
+    "main.js": "/urban-ranch-grasshopper/static/js/main.b8988448.js",
     "static/js/453.0a0ed4e4.chunk.js": "/urban-ranch-grasshopper/static/js/453.0a0ed4e4.chunk.js",
     "static/media/logo.svg": "/urban-ranch-grasshopper/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/urban-ranch-grasshopper/index.html",
     "main.f855e6bc.css.map": "/urban-ranch-grasshopper/static/css/main.f855e6bc.css.map",
-    "main.6b61c923.js.map": "/urban-ranch-grasshopper/static/js/main.6b61c923.js.map",
+    "main.b8988448.js.map": "/urban-ranch-grasshopper/static/js/main.b8988448.js.map",
     "453.0a0ed4e4.chunk.js.map": "/urban-ranch-grasshopper/static/js/453.0a0ed4e4.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f855e6bc.css",
-    "static/js/main.6b61c923.js"
+    "static/js/main.b8988448.js"
   ]
 }
