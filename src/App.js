@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "./App.css"; // For external CSS
 
 const App = () => {
     const [language, setLanguage] = useState("en"); // Default language
@@ -57,123 +58,120 @@ const App = () => {
     };
 
     return (
-        <div style={{ padding: "20px", fontFamily: "Arial" }}>
+        <div className="app-container">
             {/* Language Switcher */}
-            <div style={{ marginBottom: "20px" }}>
-                <button onClick={() => setLanguage("en")} style={{ marginRight: "10px" }}>
+            <div className="language-switcher">
+                <button
+                    className={language === "en" ? "active" : ""}
+                    onClick={() => setLanguage("en")}
+                >
                     English
                 </button>
-                <button onClick={() => setLanguage("lt")}>Lietuvių</button>
+                <button
+                    className={language === "lt" ? "active" : ""}
+                    onClick={() => setLanguage("lt")}
+                >
+                    Lietuvių
+                </button>
             </div>
 
             {/* Form */}
-            <h1>{translations.title}</h1>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label>{translations.date}:</label>
-                    <br />
-                    <label>
-                        <input
-                            type="radio"
-                            name="date"
-                            value="December 26 - 30 (200 Eur)"
-                            onChange={handleChange}
-                        />
-                        Gruodžio 26 - 30 d. (200 Eur)
-                    </label>
-                    <br />
-                    <label>
-                        <input
-                            type="radio"
-                            name="date"
-                            value="December 20 - 23 (150 Eur)"
-                            onChange={handleChange}
-                        />
-                        Gruodžio 20 - 23 d. (150 Eur)
-                    </label>
-                    <br />
-                    <label>
-                        <input
-                            type="radio"
-                            name="date"
-                            value="January 1 - 4 (150 Eur)"
-                            onChange={handleChange}
-                        />
-                        Sausio 1 - 4 d. (150 Eur)
-                    </label>
+            <h1 className="form-title">{translations.title || "Registration Form"}</h1>
+            <form className="form-container" onSubmit={handleSubmit}>
+                <div className="form-group">
+                    <label>{translations.date || "Select a Date"}:</label>
+                    <div className="radio-group">
+                        <label>
+                            <input
+                                type="radio"
+                                name="date"
+                                value="December 26 - 30 (200 Eur)"
+                                onChange={handleChange}
+                            />
+                            Gruodžio 26 - 30 d. (200 Eur)
+                        </label>
+                        <label>
+                            <input
+                                type="radio"
+                                name="date"
+                                value="December 20 - 23 (150 Eur)"
+                                onChange={handleChange}
+                            />
+                            Gruodžio 20 - 23 d. (150 Eur)
+                        </label>
+                        <label>
+                            <input
+                                type="radio"
+                                name="date"
+                                value="January 1 - 4 (150 Eur)"
+                                onChange={handleChange}
+                            />
+                            Sausio 1 - 4 d. (150 Eur)
+                        </label>
+                    </div>
                 </div>
 
-                <br />
-
-                <div>
-                    <label>{translations.camperName}:</label>
-                    <br />
+                <div className="form-group">
+                    <label>{translations.camperName || "Camper Name"}:</label>
                     <input
                         type="text"
                         name="camperName"
                         value={formData.camperName}
                         onChange={handleChange}
                         required
+                        placeholder="Enter camper's name"
                     />
                 </div>
 
-                <br />
-
-                <div>
-                    <label>{translations.parentName}:</label>
-                    <br />
+                <div className="form-group">
+                    <label>{translations.parentName || "Parent's Name"}:</label>
                     <input
                         type="text"
                         name="parentName"
                         value={formData.parentName}
                         onChange={handleChange}
                         required
+                        placeholder="Enter parent's name"
                     />
                 </div>
 
-                <br />
-
-                <div>
-                    <label>{translations.parentEmail}:</label>
-                    <br />
+                <div className="form-group">
+                    <label>{translations.parentEmail || "Parent's Email"}:</label>
                     <input
                         type="email"
                         name="parentEmail"
                         value={formData.parentEmail}
                         onChange={handleChange}
                         required
+                        placeholder="Enter parent's email"
                     />
                 </div>
 
-                <br />
-
-                <div>
-                    <label>{translations.parentPhone}:</label>
-                    <br />
+                <div className="form-group">
+                    <label>{translations.parentPhone || "Parent's Phone"}:</label>
                     <input
                         type="tel"
                         name="parentPhone"
                         value={formData.parentPhone}
                         onChange={handleChange}
                         required
+                        placeholder="Enter parent's phone number"
                     />
                 </div>
 
-                <br />
-
-                <div>
-                    <label>{translations.notes}:</label>
-                    <br />
+                <div className="form-group">
+                    <label>{translations.notes || "Notes"}:</label>
                     <textarea
                         name="notes"
                         value={formData.notes}
                         onChange={handleChange}
+                        placeholder="Enter any additional notes (e.g., allergies)"
                     ></textarea>
                 </div>
 
-                <br />
-
-                <button type="submit">{translations.submit}</button>
+                <button type="submit" className="submit-button">
+                    {translations.submit || "Submit"}
+                </button>
             </form>
         </div>
     );
