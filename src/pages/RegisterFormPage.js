@@ -84,14 +84,15 @@ const RegisterFormPage = () => {
             <form className="form-container" onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label>{translations.date || "Select a Date"}:</label>
-                    <div className="radio-group">
+                    <div className="radio-group" style={{ display: "flex", gap: "10px" }}>
                         {shifts.map((shift) => (
-                            <label key={shift.id}>
+                            <label key={shift.id} style={{ display: "flex", alignItems: "center" }}>
                                 <input
                                     type="radio"
                                     name="date"
                                     value={shift.date}
                                     onChange={handleChange}
+                                    style={{ marginRight: "5px" }}
                                 />
                                 {shift.date}
                             </label>
