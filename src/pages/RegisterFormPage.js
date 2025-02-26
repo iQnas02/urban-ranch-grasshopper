@@ -4,6 +4,7 @@ import axios from "axios";
 const RegisterFormPage = () => {
     const [language, setLanguage] = useState("en"); // Default language
     const [translations, setTranslations] = useState({});
+    const [shifts, setShifts] = useState([]);
     const [formData, setFormData] = useState({
         date: "",
         camperName: "",
@@ -24,6 +25,18 @@ const RegisterFormPage = () => {
         };
         fetchTranslations();
     }, [language]);
+
+    useEffect(() => {
+        const fetchShifts = async () => {
+            try {
+                const response = await axios.get("http://localhost:3001/shifts");
+                setShifts(response.data);
+            } catch (error) {
+                console.error("Error fetching shift dates", error);
+            }
+        };
+        fetchShifts();
+    }, []);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -72,33 +85,17 @@ const RegisterFormPage = () => {
                 <div className="form-group">
                     <label>{translations.date || "Select a Date"}:</label>
                     <div className="radio-group">
-                        <label>
-                            <input
-                                type="radio"
-                                name="date"
-                                value="December 26 - 30 (200 Eur)"
-                                onChange={handleChange}
-                            />
-                            Gruodžio 26 - 30 d. (200 Eur)
-                        </label>
-                        <label>
-                            <input
-                                type="radio"
-                                name="date"
-                                value="December 20 - 23 (150 Eur)"
-                                onChange={handleChange}
-                            />
-                            Gruodžio 20 - 23 d. (150 Eur)
-                        </label>
-                        <label>
-                            <input
-                                type="radio"
-                                name="date"
-                                value="January 1 - 4 (150 Eur)"
-                                onChange={handleChange}
-                            />
-                            Sausio 1 - 4 d. (150 Eur)
-                        </label>
+                        {shifts.map((shift) => (
+                            <label key={shift.id}>
+                                <input
+                                    type="radio"
+                                    name="date"
+                                    value={shift.date}
+                                    onChange={handleChange}
+                                />
+                                {shift.date}
+                            </label>
+                        ))}
                     </div>
                 </div>
 
