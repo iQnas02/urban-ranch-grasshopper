@@ -1,4 +1,4 @@
-import {create} from "zustand";
+import { create } from "zustand";
 
 export const useMainStore = create((set) => ({
     user: JSON.parse(localStorage.getItem("user")) || null, // Initialize from localStorage
@@ -8,7 +8,7 @@ export const useMainStore = create((set) => ({
 
         // Check credentials
         if (email === adminEmail && password === adminPassword) {
-            const user = { email, role: "admin" };
+            const user = { email, role: "admin" }; // This still stores role info for admin users
             localStorage.setItem("user", JSON.stringify(user)); // Persist in localStorage
             set({ user });
             return { success: true };
